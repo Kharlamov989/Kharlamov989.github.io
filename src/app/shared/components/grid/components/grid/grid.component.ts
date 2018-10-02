@@ -12,6 +12,8 @@ import { Data } from '../../models';
 import { Utils } from '../../utils';
 import { AppState, InternalStateType } from '../../../../../app.service';
 import { FilterService } from '../filter';
+import { Organization } from '../../../../../models/organization';
+import { StorageProvider } from '../../../../../core/storage-provider';
 
 @Component({
     selector: 'grid',
@@ -42,6 +44,8 @@ export class GridComponent implements OnInit, OnChanges {
         private utils: Utils,
         public appState: AppState,
         public filterService: FilterService,
+        private storageProvider: StorageProvider
+
     ) {
         this.state = this.appState.state;
     }
@@ -169,13 +173,17 @@ export class GridComponent implements OnInit, OnChanges {
     }
 
     public onKeySearch(event: any) {
+        let organizations: Organization[] = this.storageProvider.get('organizations');
+        organizations = organizations ? organizations : []
+        
         if (event.keyCode === 13) {
-            if (!this.state.filter) {
-                this.state.filter = {}
-            }
-
-            this.state.filter.search = this.searchText;
-            this.filter();
+            let newOrg = organizations.filter((e) => {
+                if(e.name.includes(this.searchText) || e.decription.includes(this.searchText) || e.address.includes(this.searchText)) {
+                    return e;
+                }
+            })
+            console.log(newOrg)
+            this.data.response.results = newOrg;
         }
     }
 

@@ -15,7 +15,7 @@ import { Organization } from '../../../../models/organization';
     host: { class: 'layout__block layout__block--content' }
 })
 export class NewComponent {
-    @Input() public currentRow: Organization = new Organization ();
+    @Input() public currentRow: Organization = new Organization();
     @Input() public accountSubject: Subject<any> = new Subject<any>()
     @Input() public removeModal: ModalState = new ModalState(false);
     @Input() public taskModalState: ModalState = new ModalState(false);
@@ -30,7 +30,7 @@ export class NewComponent {
         { title: 'Сайт', name: 'site' },
         { title: 'Тип услуг', name: 'service' },
         { title: 'Телефон', name: 'tel' },
-        { template: ActionComponent, callback: {edit: this.openTaskModal.bind(this), remove: this.openRemoveModal.bind(this)} }
+        { template: ActionComponent, callback: { edit: this.openTaskModal.bind(this), remove: this.openRemoveModal.bind(this) } }
     ];
     @ViewChild('grid') public grid;
 
@@ -39,16 +39,50 @@ export class NewComponent {
         public tabs: MainTabsComponent,
         private storageProvider: StorageProvider
     ) {
-        this.list = this.storageProvider.get('organizations');
+        if (this.storageProvider.get('organizations')) {
+            this.list = this.storageProvider.get('organizations');
+        } else {
+            this.list = [
+                {
+                    id: '1',
+                    name: 'Пятерочка',
+                    address: 'р. Комарова, 14 корпус 1,',
+                    decription: 'Продовольственный магазин',
+                    site: 'https://5ka.ru/',
+                    service: 'магазин',
+                    tel: ' 8 (800) 555-55-05'
+                },
+                {
+                    id: '2',
+                    name: 'Эльдорадо',
+                    address: 'пр-кт Комарова 2/2',
+                    decription: 'Электротехника',
+                    site: 'www.eldorado.ru',
+                    service: 'магазин',
+                    tel: ' 8 (381) 240-54-76'
+                },
+                {
+                    id: '3',
+                    name: 'Шашлыкофф‎',
+                    address: '70 лет октября 24',
+                    decription: 'Кафе',
+                    site: 'shashlikoff.com',
+                    service: 'питание',
+                    tel: '8 (381) 292-50-94'
+                }
+            ];
+
+           this.storageProvider.set('organizations', this.list);
+        }
     }
 
     public openTaskModal(currentRow: Organization): void {
-        this.currentRow = { ...currentRow};
+        this.currentRow = { ...currentRow };
         this.taskModalState = { isOpen: true };
     }
-    
+
     public openRemoveModal(currentRow: Organization): void {
-        this.currentRow = { ...currentRow};
+        this.currentRow = { ...currentRow };
         this.removeModal = { isOpen: true };
     }
 
