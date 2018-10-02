@@ -39,6 +39,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Organization", function() { return Organization; });
 var Organization = /** @class */ (function () {
     function Organization() {
+        this.id = null;
         this.name = null;
         this.address = null;
         this.decription = null;
@@ -281,6 +282,96 @@ var ChangeStageModalComponent = /** @class */ (function (_super) {
 
 /***/ }),
 
+/***/ "./src/app/modules/main/components/remove-modal/remove-modal.component.html":
+/*!**********************************************************************************!*\
+  !*** ./src/app/modules/main/components/remove-modal/remove-modal.component.html ***!
+  \**********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"modal-box modal-box--tiny\" [class.modal-box--active]=\"modalState.isOpen\">\r\n    <div class=\"modal-box__popup\">\r\n        <div class=\"modal-box__block modal-box__block--vertical\">\r\n            <div class=\"modal-box__block\">\r\n                <div class=\"modal-box__container modal-box__container--content\">\r\n                    <div class=\"callout callout--primary\">\r\n                        Вы уверены что хотите удалить запись?\r\n                    </div>\r\n                </div>\r\n                <div class=\"modal-box__control-bar align-right align-right\">\r\n                    <div class=\"panel shrink\">\r\n                        <div class=\"panel__layout\">\r\n                            <button class=\"button button--primary\" (click)=\"remove()\" type=\"button\">Удалить</button>\r\n                        </div>\r\n                        <div class=\"panel__layout\">\r\n                            <button class=\"button\" type=\"button\" (click)=\"close()\">Отмена</button>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>\r\n"
+
+/***/ }),
+
+/***/ "./src/app/modules/main/components/remove-modal/remove-modal.component.ts":
+/*!********************************************************************************!*\
+  !*** ./src/app/modules/main/components/remove-modal/remove-modal.component.ts ***!
+  \********************************************************************************/
+/*! exports provided: RemoveModalComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RemoveModalComponent", function() { return RemoveModalComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _shared_components_modal_modal_base_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../shared/components/modal/modal.base.component */ "./src/app/shared/components/modal/modal.base.component.ts");
+/* harmony import */ var _models_organization__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../models/organization */ "./src/app/models/organization.ts");
+/* harmony import */ var _core_storage_provider__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../core/storage-provider */ "./src/app/core/storage-provider.ts");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+var RemoveModalComponent = /** @class */ (function (_super) {
+    __extends(RemoveModalComponent, _super);
+    function RemoveModalComponent(storageProvider) {
+        var _this = _super.call(this) || this;
+        _this.storageProvider = storageProvider;
+        return _this;
+    }
+    RemoveModalComponent.prototype.remove = function () {
+        var _this = this;
+        var organizations = this.storageProvider.get('organizations');
+        organizations = organizations ? organizations : [];
+        var newOrg = organizations.filter(function (e) {
+            if (e.id != _this.model.id) {
+                return e;
+            }
+        });
+        this.storageProvider.set('organizations', newOrg);
+        this.close();
+        this.callback();
+    };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", _models_organization__WEBPACK_IMPORTED_MODULE_2__["Organization"])
+    ], RemoveModalComponent.prototype, "model", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Function)
+    ], RemoveModalComponent.prototype, "callback", void 0);
+    RemoveModalComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'remove-modal',
+            template: __webpack_require__(/*! ./remove-modal.component.html */ "./src/app/modules/main/components/remove-modal/remove-modal.component.html")
+        }),
+        __metadata("design:paramtypes", [_core_storage_provider__WEBPACK_IMPORTED_MODULE_3__["StorageProvider"]])
+    ], RemoveModalComponent);
+    return RemoveModalComponent;
+}(_shared_components_modal_modal_base_component__WEBPACK_IMPORTED_MODULE_1__["ModalBaseComponent"]));
+
+
+
+/***/ }),
+
 /***/ "./src/app/modules/main/components/repost-modal/repost-modal.component.html":
 /*!**********************************************************************************!*\
   !*** ./src/app/modules/main/components/repost-modal/repost-modal.component.html ***!
@@ -439,13 +530,20 @@ var TaskModalComponent = /** @class */ (function (_super) {
         return _this;
     }
     TaskModalComponent.prototype.save = function () {
+        var _this = this;
         var organizations = this.storageProvider.get('organizations');
-        if (!organizations) {
-            organizations = [];
-            organizations.push(this.model);
-            this.storageProvider.set('organizations', organizations);
+        organizations = organizations ? organizations : [];
+        if (this.model.id) {
+            var newOrg = organizations.map(function (e) {
+                if (e.id == _this.model.id) {
+                    e = _this.model;
+                }
+                return e;
+            });
+            this.storageProvider.set('organizations', newOrg);
         }
         else {
+            this.model.id = Math.random().toString(16) + "000000000".substr(2, 8);
             organizations.push(this.model);
             this.storageProvider.set('organizations', organizations);
         }
@@ -464,6 +562,10 @@ var TaskModalComponent = /** @class */ (function (_super) {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
         __metadata("design:type", rxjs__WEBPACK_IMPORTED_MODULE_3__["Subject"])
     ], TaskModalComponent.prototype, "taskSubject", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", _models_organization__WEBPACK_IMPORTED_MODULE_6__["Organization"])
+    ], TaskModalComponent.prototype, "model", void 0);
     TaskModalComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'task-modal',
@@ -544,12 +646,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_change_stage_modal_change_stage_modal_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/change-stage-modal/change-stage-modal.component */ "./src/app/modules/main/components/change-stage-modal/change-stage-modal.component.ts");
 /* harmony import */ var _components_task_modal_task_modal_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/task.modal/task-modal.component */ "./src/app/modules/main/components/task.modal/task-modal.component.ts");
 /* harmony import */ var _components_repost_modal_repost_modal_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/repost-modal/repost-modal.component */ "./src/app/modules/main/components/repost-modal/repost-modal.component.ts");
+/* harmony import */ var _components_remove_modal_remove_modal_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./components/remove-modal/remove-modal.component */ "./src/app/modules/main/components/remove-modal/remove-modal.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -580,7 +684,8 @@ var MainModule = /** @class */ (function () {
                 _components_account_detail_modal_account_detail_modal_component__WEBPACK_IMPORTED_MODULE_5__["AccountDetailModalComponent"],
                 _components_change_stage_modal_change_stage_modal_component__WEBPACK_IMPORTED_MODULE_8__["ChangeStageModalComponent"],
                 _components_task_modal_task_modal_component__WEBPACK_IMPORTED_MODULE_9__["TaskModalComponent"],
-                _components_repost_modal_repost_modal_component__WEBPACK_IMPORTED_MODULE_10__["RepostModalComponent"]
+                _components_repost_modal_repost_modal_component__WEBPACK_IMPORTED_MODULE_10__["RepostModalComponent"],
+                _components_remove_modal_remove_modal_component__WEBPACK_IMPORTED_MODULE_11__["RemoveModalComponent"]
             ]
         })
     ], MainModule);
@@ -645,7 +750,7 @@ var MainService = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"layout__block shrink\">\r\n    <div class=\"control-bar\">\r\n        <div class=\"control-bar__layout\">\r\n            <div class=\"panel shrink\">\r\n                <div class=\"panel__layout\">\r\n                    <button class=\"button\" (click)=\"openTaskModal()\">Добавить организацию</button>\r\n                </div>\r\n            </div>  \r\n        </div>\r\n    </div>\r\n</div>\r\n\r\n<grid #grid [list]=\"list\" [columns]=\"columns\" [selectedRow]=\"selectedRow\"></grid>\r\n\r\n<task-modal [modalState]=\"taskModalState\" [callback]=\"refresh.bind(this)\"></task-modal> \r\n\r\n<notifier-container></notifier-container>"
+module.exports = "<div class=\"layout__block shrink\">\r\n    <div class=\"control-bar\">\r\n        <div class=\"control-bar__layout\">\r\n            <div class=\"panel shrink\">\r\n                <div class=\"panel__layout\">\r\n                    <button class=\"button\" (click)=\"openTaskModal()\">Добавить организацию</button>\r\n                </div>\r\n            </div>  \r\n        </div>\r\n    </div>\r\n</div>\r\n\r\n<grid #grid [list]=\"list\" [columns]=\"columns\" [selectedRow]=\"selectedRow\"></grid>\r\n\r\n<task-modal [modalState]=\"taskModalState\" [callback]=\"refresh.bind(this)\" [model]=\"currentRow\"></task-modal> \r\n<remove-modal [modalState]=\"removeModal\" [callback]=\"refresh.bind(this)\" [model]=\"currentRow\"></remove-modal> \r\n\r\n<notifier-container></notifier-container>"
 
 /***/ }),
 
@@ -660,13 +765,21 @@ module.exports = "<div class=\"layout__block shrink\">\r\n    <div class=\"contr
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NewComponent", function() { return NewComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _shared_components_modal_model_modal_state__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../shared/components/modal/model/modal-state */ "./src/app/shared/components/modal/model/modal-state.ts");
-/* harmony import */ var _main_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../main.service */ "./src/app/modules/main/main.service.ts");
-/* harmony import */ var _shared_components_tabs_components_main_tabs_main_tabs_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../shared/components/tabs/components/main-tabs/main.tabs.component */ "./src/app/shared/components/tabs/components/main-tabs/main.tabs.component.ts");
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+/* harmony import */ var _shared_components_grid_templates__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../shared/components/grid/templates */ "./src/app/shared/components/grid/templates/index.ts");
+/* harmony import */ var _shared_components_modal_model_modal_state__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../shared/components/modal/model/modal-state */ "./src/app/shared/components/modal/model/modal-state.ts");
+/* harmony import */ var _main_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../main.service */ "./src/app/modules/main/main.service.ts");
+/* harmony import */ var _shared_components_tabs_components_main_tabs_main_tabs_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../shared/components/tabs/components/main-tabs/main.tabs.component */ "./src/app/shared/components/tabs/components/main-tabs/main.tabs.component.ts");
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
-/* harmony import */ var _core_storage_provider__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../../core/storage-provider */ "./src/app/core/storage-provider.ts");
+/* harmony import */ var _core_storage_provider__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../../core/storage-provider */ "./src/app/core/storage-provider.ts");
+/* harmony import */ var _models_organization__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../../models/organization */ "./src/app/models/organization.ts");
+var __assign = (undefined && undefined.__assign) || Object.assign || function(t) {
+    for (var s, i = 1, n = arguments.length; i < n; i++) {
+        s = arguments[i];
+        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+            t[p] = s[p];
+    }
+    return t;
+};
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -685,43 +798,41 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 var NewComponent = /** @class */ (function () {
-    function NewComponent(mainService, tabs, http, storageProvider) {
+    function NewComponent(mainService, tabs, storageProvider) {
         this.mainService = mainService;
         this.tabs = tabs;
-        this.http = http;
         this.storageProvider = storageProvider;
+        this.currentRow = new _models_organization__WEBPACK_IMPORTED_MODULE_7__["Organization"]();
         this.accountSubject = new rxjs__WEBPACK_IMPORTED_MODULE_5__["Subject"]();
-        this.detailModalState = new _shared_components_modal_model_modal_state__WEBPACK_IMPORTED_MODULE_1__["ModalState"](false);
-        this.taskModalState = new _shared_components_modal_model_modal_state__WEBPACK_IMPORTED_MODULE_1__["ModalState"](false);
+        this.removeModal = new _shared_components_modal_model_modal_state__WEBPACK_IMPORTED_MODULE_2__["ModalState"](false);
+        this.taskModalState = new _shared_components_modal_model_modal_state__WEBPACK_IMPORTED_MODULE_2__["ModalState"](false);
         this.selectedRow = [];
-        this.list = [{ name: 'белый ветер', address: 'улица московская', decription: 'секс услуги', site: 'шлюхи.ком', service: 'качественный еб', tel: '333-666-666' }];
+        this.list = [];
         this.columns = [
             { title: 'Название организации', name: 'name' },
             { title: 'Адрес', name: 'address' },
             { title: 'Описание', name: 'decription' },
             { title: 'Сайт', name: 'site' },
             { title: 'Тип услуг', name: 'service' },
-            { title: 'Телефон', name: 'tel' }
+            { title: 'Телефон', name: 'tel' },
+            { template: _shared_components_grid_templates__WEBPACK_IMPORTED_MODULE_1__["ActionComponent"], callback: { edit: this.openTaskModal.bind(this), remove: this.openRemoveModal.bind(this) } }
         ];
         this.list = this.storageProvider.get('organizations');
     }
-    NewComponent.prototype.openTaskModal = function () {
+    NewComponent.prototype.openTaskModal = function (currentRow) {
+        this.currentRow = __assign({}, currentRow);
         this.taskModalState = { isOpen: true };
+    };
+    NewComponent.prototype.openRemoveModal = function (currentRow) {
+        this.currentRow = __assign({}, currentRow);
+        this.removeModal = { isOpen: true };
     };
     NewComponent.prototype.refresh = function () {
         this.list = this.storageProvider.get('organizations');
     };
-    NewComponent.prototype.toNextStage = function () {
-        var _this = this;
-        return this.mainService.moveToStage('take', { task_ids: this.selectedRow }).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function () {
-            _this.selectedRow = [];
-            _this.grid.refresh();
-            _this.tabs.getCounters();
-        }));
-    };
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
-        __metadata("design:type", Object)
+        __metadata("design:type", _models_organization__WEBPACK_IMPORTED_MODULE_7__["Organization"])
     ], NewComponent.prototype, "currentRow", void 0);
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
@@ -729,11 +840,11 @@ var NewComponent = /** @class */ (function () {
     ], NewComponent.prototype, "accountSubject", void 0);
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
-        __metadata("design:type", _shared_components_modal_model_modal_state__WEBPACK_IMPORTED_MODULE_1__["ModalState"])
-    ], NewComponent.prototype, "detailModalState", void 0);
+        __metadata("design:type", _shared_components_modal_model_modal_state__WEBPACK_IMPORTED_MODULE_2__["ModalState"])
+    ], NewComponent.prototype, "removeModal", void 0);
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
-        __metadata("design:type", _shared_components_modal_model_modal_state__WEBPACK_IMPORTED_MODULE_1__["ModalState"])
+        __metadata("design:type", _shared_components_modal_model_modal_state__WEBPACK_IMPORTED_MODULE_2__["ModalState"])
     ], NewComponent.prototype, "taskModalState", void 0);
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"])(),
@@ -752,10 +863,9 @@ var NewComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./new.component.html */ "./src/app/modules/main/stages/new/new.component.html"),
             host: { class: 'layout__block layout__block--content' }
         }),
-        __metadata("design:paramtypes", [_main_service__WEBPACK_IMPORTED_MODULE_2__["MainService"],
-            _shared_components_tabs_components_main_tabs_main_tabs_component__WEBPACK_IMPORTED_MODULE_3__["MainTabsComponent"],
-            _angular_common_http__WEBPACK_IMPORTED_MODULE_6__["HttpClient"],
-            _core_storage_provider__WEBPACK_IMPORTED_MODULE_7__["StorageProvider"]])
+        __metadata("design:paramtypes", [_main_service__WEBPACK_IMPORTED_MODULE_3__["MainService"],
+            _shared_components_tabs_components_main_tabs_main_tabs_component__WEBPACK_IMPORTED_MODULE_4__["MainTabsComponent"],
+            _core_storage_provider__WEBPACK_IMPORTED_MODULE_6__["StorageProvider"]])
     ], NewComponent);
     return NewComponent;
 }());
