@@ -1,0 +1,62 @@
+<div class="layout__block shrink" *ngIf="options">
+    <div class="filter" [class.filter--active]="isFilter">
+        <div class="filter__layout">
+            <div class="filter__column column">
+                <div class="filter__col column__col column__col--1" *ngIf="options.labels">
+                    <label class="label">
+                        <div class="label__title">
+                            {{ options.labels.title || 'Метки'}}:
+                        </div>
+                        <select class="label__item select" [(ngModel)]="state.filter['labels']">
+                            <option value="">Любой</option>
+                            <option value="{{label.id}}" *ngFor="let label of state.filterData.labels">
+                                {{label.name}}
+                            </option>
+                        </select>
+                    </label>
+                </div>
+                <div class="filter__col column__col column__col--1" *ngIf="options.from_bot">
+                    <label class="label">
+                        <div class="label__title">
+                            {{ options.from_bot.title || 'Боты'}}:
+                        </div>
+                        <select class="label__item select" [(ngModel)]="state.filter['from_bot']">
+                            <option value="">Любой</option>
+                            <option value="{{bot.id}}" *ngFor="let bot of state.filterData.bots">
+                                {{bot.name}}
+                            </option>
+                        </select>
+                    </label>
+                </div>
+                <div class="filter__col column__col column__col--1" *ngIf="options.author">
+                    <label class="label">
+                        <div class="label__title">
+                            {{ options.author.title || 'Автор'}}:
+                        </div>
+                        <select class="label__item select" [(ngModel)]="state.filter[options.author.path || 'from_bot__owner']">
+                            <option value="">Любой</option>
+                            <option value="{{user.id}}" *ngFor="let user of state.filterData.users">
+                                {{user.first_name}}
+                            </option>
+                        </select>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="filter__layout shrink">
+            <div class="label label--no-title shrink">
+                <div class="panel">
+                    <div class="panel__layout">
+                        <button class="button bold" type="button" (click)="filter()" [disabled]="isPending.state">
+                            Применить
+                        </button>
+                    </div>
+                    <div class="panel__layout">
+                        <a class="link" (click)="clear()">Сброс</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

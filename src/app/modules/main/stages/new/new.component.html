@@ -1,0 +1,17 @@
+<div class="layout__block shrink">
+    <div class="control-bar">
+        <div class="control-bar__layout">
+            <div class="panel shrink">
+                <div class="panel__layout">
+                    <button class="button" (click)="openTaskModal()">Добавить организацию</button>
+                </div>
+            </div>  
+        </div>
+    </div>
+</div>
+
+<grid #grid [list]="list" [columns]="columns" [selectedRow]="selectedRow"></grid>
+
+<task-modal [modalState]="taskModalState" [callback]="refresh.bind(this)"></task-modal> 
+
+<notifier-container></notifier-container>

@@ -1,0 +1,7 @@
+{
+  "/api": {
+    "target": "http://192.168.80.80:2020",
+    "secure": false,
+    "logLevel": "debug"
+  }
+}

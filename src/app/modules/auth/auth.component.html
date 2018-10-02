@@ -1,0 +1,126 @@
+<div class="layout">
+    <div class="layout__block">
+        <div class="login-box login-box--sign-in">
+            <form class="login-box__container login-box__container--sign-in" [formGroup]="loginForm" (ngSubmit)="submit()">
+                <div class="login-box__layout">
+                    <div class="panel">
+                        <div class="panel__layout">
+                            <div class="login-box__title">
+                                Справочник организаций
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="login-box__layout">
+                    <div class="group-input">
+                        <input class="group-input__input input" type="email" placeholder="E-mail" formControlName="email" />
+                        <input class="group-input__input group-input__input--last input" type="password" placeholder="Пароль"
+                            formControlName="password" />
+                    </div>
+                </div>
+
+                <div class="login-box__layout">
+                    <div class="login-box__message login-box__message--error" *ngIf="error">Ошибка входа: не верный
+                        логин или пароль</div>
+                </div>
+
+                <div class="login-box__layout">
+                    <div class="panel">
+                        <div class="panel__layout shrink">
+                            <button class="login-box__button button" type="submit">
+                                Войти
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+            <form class="login-box__container login-box__container--password-recovery">
+                <div class="login-box__layout">
+                    <div class="panel">
+                        <div class="panel__layout">
+                            <div class="login-box__title">
+                                Восстановление пароля:
+                            </div>
+                        </div>
+                        <div class="panel__layout shrink">
+                            <div class="logo logo--login logo--n-m">
+                                <svg class="logo__icon" viewBox="0 0 35 18" version="1.1">
+                                    <path d="M4.783,4.129c2.41,-1.587 4.691,-2.303 6.175,-2.647c-1.969,1.76 -3.207,4.315 -3.207,7.158c0,2.843 1.238,5.398 3.207,7.158c-1.484,-0.344 -3.765,-1.06 -6.175,-2.647c-2.35,-1.546 -3.883,-3.304 -4.783,-4.511c0.9,-1.207 2.433,-2.965 4.783,-4.511Zm25.234,0c-2.41,-1.587 -4.691,-2.303 -6.175,-2.647c1.969,1.76 3.207,4.315 3.207,7.158c0,2.843 -1.238,5.398 -3.207,7.158c1.484,-0.344 3.765,-1.06 6.175,-2.647c2.35,-1.546 3.883,-3.304 4.783,-4.511c-0.9,-1.207 -2.433,-2.965 -4.783,-4.511Zm-14.869,3.215l4.131,-7.132c-0.603,-0.134 -1.231,-0.212 -1.877,-0.212c-2.081,0 -3.984,0.73 -5.48,1.948l3.178,5.482l0.048,-0.086Zm10.525,-1.283c-0.797,-2.526 -2.731,-4.544 -5.198,-5.477l-3.173,5.477l8.371,0Zm0.226,0.842l-6.494,0l0.251,0.437l4.131,7.13c1.414,-1.538 2.285,-3.585 2.285,-5.835c0,-0.592 -0.061,-1.19 -0.173,-1.732Zm-11.502,1.749l-3.381,-5.838c-1.413,1.538 -2.284,3.59 -2.284,5.841c0,0.592 0.06,1.135 0.173,1.737l6.494,0l-1.002,-1.74Zm-5.267,2.582c0.798,2.526 2.732,4.545 5.198,5.478l3.174,-5.478l-8.372,0Zm9.772,-0.002l-3.382,5.836c0.607,0.134 1.236,0.212 1.882,0.212c2.081,0 3.984,-0.73 5.479,-1.948l-3.177,-5.482l-0.802,1.382Z"
+                                        style="fill:#00416c;fill-rule:nonzero;" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="panel__layout shrink">
+                            <div class="login-box__title login-box__title--logo">
+                                Аргус 360
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="login-box__layout">
+                    <div class="group-input">
+                        <input class="group-input__input input" type="email" placeholder="E-mail" />
+                    </div>
+                </div>
+
+                <div class="login-box__layout">
+                    <div class="panel">
+                        <div class="panel__layout shrink">
+                            <button class="login-box__button button" type="submit">
+                                Продолжить
+                            </button>
+                        </div>
+                        <div class="panel__layout">
+                            <div class="login-box__message">
+                                <a href="#" class="link">Отмена</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+            <form class="login-box__container login-box__container--successful-recovery">
+                <div class="login-box__layout">
+                    <div class="panel">
+                        <div class="panel__layout">
+                            <div class="login-box__title">
+                                Восстановление пароля:
+                            </div>
+                        </div>
+                        <div class="panel__layout shrink">
+                            <div class="logo logo--n-m">
+                                <svg class="logo__icon" viewBox="0 0 35 18" version="1.1">
+                                    <path d="M4.783,4.129c2.41,-1.587 4.691,-2.303 6.175,-2.647c-1.969,1.76 -3.207,4.315 -3.207,7.158c0,2.843 1.238,5.398 3.207,7.158c-1.484,-0.344 -3.765,-1.06 -6.175,-2.647c-2.35,-1.546 -3.883,-3.304 -4.783,-4.511c0.9,-1.207 2.433,-2.965 4.783,-4.511Zm25.234,0c-2.41,-1.587 -4.691,-2.303 -6.175,-2.647c1.969,1.76 3.207,4.315 3.207,7.158c0,2.843 -1.238,5.398 -3.207,7.158c1.484,-0.344 3.765,-1.06 6.175,-2.647c2.35,-1.546 3.883,-3.304 4.783,-4.511c-0.9,-1.207 -2.433,-2.965 -4.783,-4.511Zm-14.869,3.215l4.131,-7.132c-0.603,-0.134 -1.231,-0.212 -1.877,-0.212c-2.081,0 -3.984,0.73 -5.48,1.948l3.178,5.482l0.048,-0.086Zm10.525,-1.283c-0.797,-2.526 -2.731,-4.544 -5.198,-5.477l-3.173,5.477l8.371,0Zm0.226,0.842l-6.494,0l0.251,0.437l4.131,7.13c1.414,-1.538 2.285,-3.585 2.285,-5.835c0,-0.592 -0.061,-1.19 -0.173,-1.732Zm-11.502,1.749l-3.381,-5.838c-1.413,1.538 -2.284,3.59 -2.284,5.841c0,0.592 0.06,1.135 0.173,1.737l6.494,0l-1.002,-1.74Zm-5.267,2.582c0.798,2.526 2.732,4.545 5.198,5.478l3.174,-5.478l-8.372,0Zm9.772,-0.002l-3.382,5.836c0.607,0.134 1.236,0.212 1.882,0.212c2.081,0 3.984,-0.73 5.479,-1.948l-3.177,-5.482l-0.802,1.382Z"
+                                        style="fill:#00416c;fill-rule:nonzero;" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="panel__layout shrink">
+                            <div class="login-box__title login-box__title--logo">
+                                Аргус 360
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="login-box__layout">
+                    <div class="login-box__message login-box__message--success">На указанный адрес отправлено письмо с
+                        инструкцией</div>
+                </div>
+
+                <div class="login-box__layout">
+                    <div class="panel">
+                        <div class="panel__layout shrink">
+                            <button class="login-box__button button" type="submit">
+                                Ок
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

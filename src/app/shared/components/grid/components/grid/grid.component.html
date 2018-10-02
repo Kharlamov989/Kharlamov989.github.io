@@ -1,0 +1,121 @@
+<filter
+    [options]="filters"
+    [url]="url"
+    [data]="data"
+    [isPending]="isPending"
+    *ngIf="isFilter"
+>
+</filter>
+<div class="layout__block shrink">
+    <div class="control-bar control-bar--sub">
+        <div class="control-bar__layout">
+            <div class="panel shrink">
+                <div class="panel__layout" *ngIf="filters">
+                    <button class="button" type="button" (click)="toggleFilter()">
+                        <span *ngIf="isFilter">Фильтр скрыть</span>
+                        <span *ngIf="!isFilter">Фильтр показать</span>
+                    </button>
+                </div>
+                <div class="panel__layout">
+                    <div class="search">
+                        <input 
+                            class="search__input"
+                            type="search"
+                            [placeholder]="filters?.searchTitle || 'Название'"
+                            (keyup)="onKeySearch($event)"
+                            [(ngModel)]="searchText"
+                        >
+                        <button class="search__button button" (click)="onKeySearch({keyCode: 13})" type="button">
+                            <span class="button__icon icon icon--baseline">
+                                <svg class="icon__svg" viewBox="0 0 2134 2134" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                                    <path id="search" d="M1443.5,915.975c0,-145.262 -51.616,-269.508 -154.847,-372.739c-103.231,-103.231 -227.477,-154.846 -372.739,-154.846c-145.262,0 -269.508,51.615 -372.739,154.846c-103.231,103.231 -154.846,227.477 -154.846,372.739c0,145.262 51.615,269.508 154.846,372.739c103.231,103.231 227.477,154.846 372.739,154.846c145.262,0 269.508,-51.615 372.739,-154.846c103.231,-103.231 154.847,-227.477 154.847,-372.739Zm602.964,979.792c0,40.844 -14.927,76.17 -44.779,105.979c-29.853,29.808 -65.179,44.735 -105.979,44.779c-42.383,0 -77.709,-14.927 -105.979,-44.779l-403.932,-402.746c-140.514,97.34 -297.141,146.01 -469.881,146.01c-112.288,0 -219.651,-21.785 -322.091,-65.355c-102.439,-43.57 -190.766,-102.462 -264.979,-176.675c-74.214,-74.214 -133.106,-162.54 -176.676,-264.98c-43.569,-102.439 -65.354,-209.803 -65.354,-322.091c0,-112.288 21.785,-219.651 65.354,-322.091c43.57,-102.439 102.462,-190.766 176.676,-264.979c74.213,-74.214 162.54,-133.106 264.979,-176.676c102.44,-43.569 209.803,-65.354 322.091,-65.354c112.288,0 219.652,21.785 322.091,65.354c102.44,43.57 190.766,102.462 264.98,176.676c74.213,74.213 133.105,162.54 176.675,264.979c43.57,102.44 65.355,209.803 65.355,322.091c0,172.74 -48.67,329.367 -146.01,469.881l403.933,403.932c29.061,29.062 43.592,64.388 43.592,105.979l-0.066,0.066Z"
+                                        style="fill-rule:nonzero;" />
+                                </svg>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+                <div class="panel__layout">
+                    Найдено:
+                    <span className="sub-text sub-text--primary">{{ data.response?.count }}</span>
+                </div>
+                <div class="panel__layout" *ngIf="this.selectedRow.length">
+                    Выделено:
+                    <span class="sub-text sub-text--primary">{{this.selectedRow.length | number}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="control-bar__layout align-right">
+            <pagination *ngIf="!hidePagination" [data]="data" [url]="url" [selectedRow]="selectedRow" [isPending]="isPending">
+            </pagination>
+        </div>
+    </div>
+</div>
+
+
+<div class="layout__container">
+    <table class="table" [class.table--load]="isPending.state">
+        <thead class="table__thead">
+            <tr class="table__row">
+                <th class="table__td" *ngFor="let column of columns">
+                    <span class="sub-text--tertiary" *ngIf="!column.ico && !column.sort">{{column.title}}</span>
+                    <span class="sub-text--tertiary" *ngIf="column.ico && !column.sort">
+                        <img class="icon__svg" [src]="column.ico">
+                    </span>
+                    <span *ngIf="column.sort" [ngClass]="column.sort === 'asc' ? 'link link--asc' : 'link link--desc'" (click)="column.sort = sort(column.sort, column.name)">
+                        <img *ngIf="column.ico" class="icon__svg" [src]="column.ico"> {{column.title}}
+                    </span>
+                    <input class="checkbox" type="checkbox" [checked]="isCheckedAll(column)" (click)="selectAll(selectAllState, column)" *ngIf="column.checkbox"
+                        [disabled]="data.response.results.length === 0 || data.response.notFound">
+                </th>
+            </tr>
+        </thead>
+        <tbody class="table__tbody">
+            <tr class="table__row table__row--loader">
+                <td class="table__td" [attr.colspan]="columns.length">
+                    <div class="table-loader" [class.table-loader--load]="isPending.state">
+                        <div class="table-loader__layout table-loader__layout--loader">
+                            <div class="panel shrink">
+                                <div class="panel__layout">
+                                    <div class="table-loader__loader loader">
+                                        <svg class="loader__svg" version="1.1" id="loader-1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="24px" height="24px"
+                                            viewBox="0 0 40 40" enable-background="new 0 0 40 40" xml:space="preserve">
+                                            <path class="loader__cyrcle" d="M20.201,5.169c-8.254,0-14.946,6.692-14.946,14.946c0,8.255,6.692,14.946,14.946,14.946
+                                            s14.946-6.691,14.946-14.946C35.146,11.861,28.455,5.169,20.201,5.169z M20.201,31.749c-6.425,0-11.634-5.208-11.634-11.634
+                                            c0-6.425,5.209-11.634,11.634-11.634c6.425,0,11.633,5.209,11.633,11.634C31.834,26.541,26.626,31.749,20.201,31.749z"
+                                            />
+                                            <path class="loader__runner" d="M26.013,10.047l1.654-2.866c-2.198-1.272-4.743-2.012-7.466-2.012h0v3.312h0
+                                                C22.32,8.481,24.301,9.057,26.013,10.047z">
+                                                <animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 20 20" to="360 20 20" dur="0.5s" repeatCount="indefinite"
+                                                />
+                                            </path>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="panel__layout shrink">
+                                    Загрузка&hellip;
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr class="table__row" *ngIf="!isPending.state && data.response.notFound">
+                <td class="table__td" [attr.colspan]="columns.length">
+                    <div class="table-loader__layout">
+                        Нет данных
+                    </div>
+                </td>
+            </tr>
+            <tr class="table__row" *ngFor="let item of data.response.results" [class.table__row--content]="isPending.state">
+                <td class="table__td" *ngFor="let column of columns">
+                    <div *ngIf="column.checkbox">
+                        <input class="checkbox" type="checkbox" *ngIf="!column.isShow ? true : column.isShow(item)" (click)="onCheck(item.id)" [checked]="isChecked(item.id)">
+                    </div>
+                    <template-wrapper *ngIf="column.template" [template]="column.template" [model]="item" [callback]="column.callback" [stageName]="column.stageName"></template-wrapper>
+                    <div *ngIf="!column.template" [ngClass]="column.className">{{getProps(item, column.name, column.type)}}</div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

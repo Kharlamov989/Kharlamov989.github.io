@@ -1,0 +1,155 @@
+<div class="modal-box modal-box--medium modal-box--active" [class.modal-box--active]="modalState.isOpen">
+    <div class="modal-box__popup">
+        <div class="modal-box__header">Подробнее об аккаунте
+            <button class="modal-box__close-button button" type="button" (click)="close()">
+                <span class="button__icon icon icon--baseline">
+                    <svg class="icon__svg" viewBox="0 0 2134 2134" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                        xml:space="preserve">
+                        <g transform="matrix(92.1348,0,0,92.1348,-91.6518,-512.8)">
+                            <g id="Icon">
+                                <path d="M23.179,23.607C23.179,24.083 23.012,24.488 22.679,24.821L20.25,27.25C19.917,27.583 19.512,27.75 19.036,27.75C18.56,27.75 18.155,27.583 17.822,27.25L12.572,22L7.322,27.25C6.989,27.583 6.584,27.75 6.108,27.75C5.632,27.75 5.227,27.583 4.894,27.25L2.465,24.821C2.132,24.488 1.965,24.083 1.965,23.607C1.965,23.131 2.132,22.726 2.465,22.393L7.715,17.143L2.465,11.893C2.132,11.56 1.965,11.155 1.965,10.679C1.965,10.203 2.132,9.798 2.465,9.465L4.894,7.036C5.227,6.703 5.632,6.536 6.108,6.536C6.584,6.536 6.989,6.703 7.322,7.036L12.572,12.286L17.822,7.036C18.155,6.703 18.56,6.536 19.036,6.536C19.512,6.536 19.917,6.703 20.25,7.036L22.679,9.465C23.012,9.798 23.179,10.203 23.179,10.679C23.179,11.155 23.012,11.56 22.679,11.893L17.429,17.143L22.679,22.393C23.012,22.726 23.179,23.131 23.179,23.607Z"
+                                    style="fill-rule:nonzero;" />
+                            </g>
+                        </g>
+                    </svg>
+                </span>
+            </button>
+        </div>
+        <div class="modal-box__control-bar">
+            <div class="nav-sub">
+                <div class="nav-sub__layout">
+                    <a class="nav-sub__link" [class.nav-sub__link--active]="'account' == activeTab" (click)="activeTab = 'account'">
+                        <span class="bold">Аккаунт</span>
+                    </a>
+                </div>
+                <div class="nav-sub__layout">
+                    <a class="nav-sub__link" [class.nav-sub__link--active]="'groups' == activeTab" (click)="activeTab = 'groups'">
+                        <span class="bold">Друзья</span>
+                    </a>
+                </div>
+                <div class="nav-sub__layout">
+                    <a class="nav-sub__link" [class.nav-sub__link--active]="'posts' == activeTab" (click)="activeTab = 'posts'">
+                        <span class="bold">Лента пользователя</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="modal-box__block">
+            <!-- Общее -->
+            <div class="modal-box__container--content" *ngIf="activeTab == 'account'">
+                <ul class="list">
+                    <li class="list__layout">
+                        <table class="table table--tertiary">
+                            <thead class="table__thead">
+                                <tr class="table__row">
+                                    <td class="table__td" colspan="3">
+                                        <span class="bold">Анкетные данные</span>
+                                    </td>
+                                </tr>
+                            </thead>
+                            <tbody class="table__tbody">
+                                <tr class="table__row">
+                                    <td class="table__td table__td--nowrap table__th--tiny">
+                                        <span class="sub-text--secondary">Имя</span>
+                                    </td>
+                                    <td class="table__td table__td--nowrap">
+                                        {{accountInfo.crw_fullname}}
+                                    </td>
+                                </tr>
+
+                                <tr class="table__row">
+                                    <td class="table__td table__td--nowrap table__th--tiny">
+                                        <span class="sub-text--secondary">Псеводним</span>
+                                    </td>
+                                    <td class="table__td table__td--nowrap">
+                                        <span>
+                                            {{ accountInfo.crw_screen_name }}
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr class="table__row">
+                                    <td class="table__td table__td--nowrap table__th--tiny">
+                                        <span class="sub-text--secondary">Id</span>
+                                    </td>
+                                    <td class="table__td table__td--nowrap">
+                                        <span>
+                                            {{ accountInfo.crw_id }}
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr class="table__row">
+                                    <td class="table__td table__td--nowrap table__th--tiny">
+                                        <span class="sub-text--secondary">Url</span>
+                                    </td>
+                                    <td class="table__td table__td--nowrap">
+                                        <span class="sub-text--primary">
+                                            <a class="link link--" [href]="accountInfo.crw_url" target="_blank">
+                                                {{ accountInfo.crw_url }}
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr class="table__row">
+                                    <td class="table__td table__td--nowrap table__th--tiny table__td--top">
+                                        <span class="sub-text--secondary">Работа</span>
+                                    </td>
+                                    <td class="table__td table__td--nowrap">
+                                        <div class="field">
+                                            <div class="field__item" *ngFor="let work of accountInfo.crw_work">
+                                                {{ work }}
+                                            </div>
+                                            <div class="field__item" *ngIf="accountInfo.crw_work.length === 0">
+                                                Нет данных
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr class="table__row">
+                                    <td class="table__td table__td--nowrap table__th--tiny table__td--top">
+                                        <span class="sub-text--secondary">Проживание</span>
+                                    </td>
+                                    <td class="table__td table__td--nowrap">
+                                        <div class="field">
+                                            <div class="field__item" *ngFor="let geo of accountInfo.crw_geo">
+                                                {{ geo }}
+                                            </div>
+                                            <div class="field__item" *ngIf="accountInfo.crw_geo.length === 0">
+                                                Нет данных
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr class="table__row">
+                                    <td class="table__td table__td--nowrap table__th--tiny table__td--top">
+                                        <span class="sub-text--secondary">Образование </span>
+                                    </td>
+                                    <td class="table__td table__td--nowrap">
+                                        <div class="field">
+                                            <div class="field__item" *ngFor="let education of accountInfo.crw_education">
+                                                {{ education }}
+                                            </div>
+                                            <div class="field__item" *ngIf="accountInfo.crw_education.length === 0">
+                                                Нет данных
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="modal-box__container--content" *ngIf="activeTab == 'groups'">
+                <!-- Входит в группы -->
+                <grid [url]="friendUrl" [columns]="accountColumns"></grid>
+            </div>
+            <!-- Участники -->
+            <div class="modal-box__container--content" *ngIf="activeTab == 'posts'">
+                <grid [url]="postsUrl" [columns]="feedColumns"></grid>
+            </div>
+        </div>
+    </div>
+</div>
+
+<repost-modal [modalState]="repostModalState" [repostSubject]="repostSubject"></repost-modal>

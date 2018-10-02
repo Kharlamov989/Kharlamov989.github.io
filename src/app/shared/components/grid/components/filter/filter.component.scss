@@ -1,0 +1,37 @@
+@import '../../../styles/scss/util/_bem-mixin';
+@import '../../../styles/scss/util/flex';
+
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+// Filter
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+@include b(filter) {
+    display: none;
+    @include flex-direction(column);
+    @include flex-wrap(nowrap);
+    @include flex-align(left, stretch);
+    flex: 1 1 auto;
+    box-sizing: border-box;
+    padding: 8px;
+    border: solid 1px #e7d3c0;
+    background-color: #f5efe7;
+
+    @include e(layout) {
+        @include flex;
+        @include flex-direction(row);
+        @include flex-wrap(nowrap);
+        @include flex-align(left, stretch);
+        box-sizing: border-box;
+        margin-bottom: 8px;
+
+        &:last-child {
+            margin-bottom: 0;
+        } //.filter__layout:last-child
+    } //.filter__layout
+
+    @include m(active) {
+        @include flex;
+    } //.filter--active
+
+} //.filter
+
+@import '../../../styles/scss/util/helper-classes';

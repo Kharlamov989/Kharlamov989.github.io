@@ -1,0 +1,33 @@
+<div class="layout__block layout__block--content">
+    <div class="layout__block shrink">
+        <div class="nav-sub">
+            <div class="nav-sub__layout">
+                <div class="nav-sub__title">
+                    <span class="bold">Этапы обработки:</span>
+                </div>
+            </div>
+            <div class="nav-sub__layout">
+                <a class="nav-sub__link" [ngClass]="{'nav-sub__link--active': active == 'new'}" routerLink="/main/new">
+                    <span class="bold">Новое:
+                        <span class="sub-text--secondary">{{state?.new?.count}}</span>
+                    </span>
+                </a>
+            </div>
+            <div class="nav-sub__layout">
+                <a class="nav-sub__link" [ngClass]="{'nav-sub__link--active': active == 'inWork'}" routerLink="/main/in-work">
+                    <span class="bold">В работе:
+                        <span class="sub-text--secondary">{{state?.inProcess?.count}}</span>
+                    </span>
+                </a>
+            </div>
+            <div class="nav-sub__layout">
+                <a class="nav-sub__link" [ngClass]="{'nav-sub__link--active': active == 'ready'}" routerLink="/main/ready">
+                    <span class="bold">Отработано:
+                        <span class="sub-text--secondary">{{state?.ready?.count}}</span>
+                    </span>
+                </a>
+            </div>
+        </div>
+    </div>
+    <ng-content></ng-content>
+</div>
