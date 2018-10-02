@@ -817,7 +817,41 @@ var NewComponent = /** @class */ (function () {
             { title: 'Телефон', name: 'tel' },
             { template: _shared_components_grid_templates__WEBPACK_IMPORTED_MODULE_1__["ActionComponent"], callback: { edit: this.openTaskModal.bind(this), remove: this.openRemoveModal.bind(this) } }
         ];
-        this.list = this.storageProvider.get('organizations');
+        if (this.storageProvider.get('organizations')) {
+            this.list = this.storageProvider.get('organizations');
+        }
+        else {
+            this.list = [
+                {
+                    id: '1',
+                    name: 'Пятерочка',
+                    address: 'р. Комарова, 14 корпус 1,',
+                    decription: 'Продовольственный магазин',
+                    site: 'https://5ka.ru/',
+                    service: 'магазин',
+                    tel: ' 8 (800) 555-55-05'
+                },
+                {
+                    id: '2',
+                    name: 'Эльдорадо',
+                    address: 'пр-кт Комарова 2/2',
+                    decription: 'Электротехника',
+                    site: 'www.eldorado.ru',
+                    service: 'магазин',
+                    tel: ' 8 (381) 240-54-76'
+                },
+                {
+                    id: '3',
+                    name: 'Шашлыкофф‎',
+                    address: '70 лет октября 24',
+                    decription: 'Кафе',
+                    site: 'shashlikoff.com',
+                    service: 'питание',
+                    tel: '8 (381) 292-50-94'
+                }
+            ];
+            this.storageProvider.set('organizations', this.list);
+        }
     }
     NewComponent.prototype.openTaskModal = function (currentRow) {
         this.currentRow = __assign({}, currentRow);

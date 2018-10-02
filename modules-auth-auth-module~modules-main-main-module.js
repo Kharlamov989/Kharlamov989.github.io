@@ -5097,6 +5097,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../utils */ "./src/app/shared/components/grid/utils/index.ts");
 /* harmony import */ var _app_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../../app.service */ "./src/app/app.service.ts");
 /* harmony import */ var _filter__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../filter */ "./src/app/shared/components/grid/components/filter/index.ts");
+/* harmony import */ var _core_storage_provider__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../../../core/storage-provider */ "./src/app/core/storage-provider.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -5112,12 +5113,14 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
 var GridComponent = /** @class */ (function () {
-    function GridComponent(dataService, utils, appState, filterService) {
+    function GridComponent(dataService, utils, appState, filterService, storageProvider) {
         this.dataService = dataService;
         this.utils = utils;
         this.appState = appState;
         this.filterService = filterService;
+        this.storageProvider = storageProvider;
         this.columns = [];
         this.selectedRow = [];
         this.isFilter = false;
@@ -5238,12 +5241,17 @@ var GridComponent = /** @class */ (function () {
         return this.utils.getValueByPath(item, path, type);
     };
     GridComponent.prototype.onKeySearch = function (event) {
+        var _this = this;
+        var organizations = this.storageProvider.get('organizations');
+        organizations = organizations ? organizations : [];
         if (event.keyCode === 13) {
-            if (!this.state.filter) {
-                this.state.filter = {};
-            }
-            this.state.filter.search = this.searchText;
-            this.filter();
+            var newOrg = organizations.filter(function (e) {
+                if (e.name.includes(_this.searchText) || e.decription.includes(_this.searchText) || e.address.includes(_this.searchText)) {
+                    return e;
+                }
+            });
+            console.log(newOrg);
+            this.data.response.results = newOrg;
         }
     };
     GridComponent.prototype.filter = function () {
@@ -5316,7 +5324,8 @@ var GridComponent = /** @class */ (function () {
         __metadata("design:paramtypes", [_services__WEBPACK_IMPORTED_MODULE_1__["DataService"],
             _utils__WEBPACK_IMPORTED_MODULE_3__["Utils"],
             _app_service__WEBPACK_IMPORTED_MODULE_4__["AppState"],
-            _filter__WEBPACK_IMPORTED_MODULE_5__["FilterService"]])
+            _filter__WEBPACK_IMPORTED_MODULE_5__["FilterService"],
+            _core_storage_provider__WEBPACK_IMPORTED_MODULE_6__["StorageProvider"]])
     ], GridComponent);
     return GridComponent;
 }());
