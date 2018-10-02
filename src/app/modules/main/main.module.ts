@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { ChangeStageModalComponent } from './components/change-stage-modal/change-stage-modal.component';
 import { TaskModalComponent } from './components/task.modal/task-modal.component';
 import { RepostModalComponent } from './components/repost-modal/repost-modal.component';
+import { RemoveModalComponent } from './components/remove-modal/remove-modal.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { RepostModalComponent } from './components/repost-modal/repost-modal.com
         AccountDetailModalComponent,
         ChangeStageModalComponent,
         TaskModalComponent,
-        RepostModalComponent
+        RepostModalComponent,
+        RemoveModalComponent
     ]
 })
 

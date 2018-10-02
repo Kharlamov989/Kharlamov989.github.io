@@ -1,0 +1,23 @@
+<div class="modal-box modal-box--tiny" [class.modal-box--active]="modalState.isOpen">
+    <div class="modal-box__popup">
+        <div class="modal-box__block modal-box__block--vertical">
+            <div class="modal-box__block">
+                <div class="modal-box__container modal-box__container--content">
+                    <div class="callout callout--primary">
+                        Вы уверены что хотите удалить запись?
+                    </div>
+                </div>
+                <div class="modal-box__control-bar align-right align-right">
+                    <div class="panel shrink">
+                        <div class="panel__layout">
+                            <button class="button button--primary" (click)="remove()" type="button">Удалить</button>
+                        </div>
+                        <div class="panel__layout">
+                            <button class="button" type="button" (click)="close()">Отмена</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

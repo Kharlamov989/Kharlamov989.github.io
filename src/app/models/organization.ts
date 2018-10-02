@@ -1,4 +1,5 @@
 export class Organization {
+    public id: string;
     public name: string;
     public address: string;
     public decription: string;
@@ -7,6 +8,7 @@ export class Organization {
     public tel: string;
 
     constructor() {
+        this.id = null;
         this.name = null;
         this.address = null;
         this.decription = null

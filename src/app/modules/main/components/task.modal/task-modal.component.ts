@@ -20,7 +20,7 @@ export class TaskModalComponent extends ModalBaseComponent {
     @Input() public callback: Function;
     @Input() public taskSubject: Subject<any> = new Subject<any>();
     public taskType: any;
-    public model: Organization = new Organization();
+    @Input() public model: Organization = new Organization();
 
     constructor(
         public botsService: MainService,
@@ -34,13 +34,21 @@ export class TaskModalComponent extends ModalBaseComponent {
 
     public save() {
         let organizations: Organization[] = this.storageProvider.get('organizations');
+        organizations = organizations ? organizations : []
 
-        if (!organizations) {
-            organizations = [];
 
-            organizations.push(this.model);
-            this.storageProvider.set('organizations', organizations);
+        if (this.model.id) {
+            let newOrg: Organization[] = organizations.map((e) => {
+                if (e.id == this.model.id) {
+                    e = this.model;
+                }
+
+                return e;
+            })
+
+            this.storageProvider.set('organizations', newOrg);
         } else {
+            this.model.id = Math.random().toString(16) + "000000000".substr(2, 8);
             organizations.push(this.model);
             this.storageProvider.set('organizations', organizations);
         }

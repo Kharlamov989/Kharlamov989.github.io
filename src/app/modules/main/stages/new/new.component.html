@@ -12,6 +12,7 @@
 
 <grid #grid [list]="list" [columns]="columns" [selectedRow]="selectedRow"></grid>
 
-<task-modal [modalState]="taskModalState" [callback]="refresh.bind(this)"></task-modal> 
+<task-modal [modalState]="taskModalState" [callback]="refresh.bind(this)" [model]="currentRow"></task-modal> 
+<remove-modal [modalState]="removeModal" [callback]="refresh.bind(this)" [model]="currentRow"></remove-modal> 
 
 <notifier-container></notifier-container>
