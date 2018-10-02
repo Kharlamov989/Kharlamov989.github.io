@@ -19,7 +19,7 @@ export class NewComponent {
     @Input() public detailModalState: ModalState = new ModalState(false);
     @Input() public taskModalState: ModalState = new ModalState(false);
     @Output() public selectedRow: number[] = [];
-    @Output() public list = [{ name: 'белый ветер', address: 'улица московская', decription: 'секс услуги', site: 'шлюхи.ком', service: 'качественный еб', tel: '333-666-666' }]
+    @Output() public list = [];
 
     public columns: any[] = [
         { title: 'Название организации', name: 'name' },
