@@ -1,0 +1,28 @@
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+// App Loader
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+@include b(app-loader) {
+    @include flex;
+    @include flex-direction(row);
+    @include flex-wrap(nowrap);
+    @include flex-align(center, middle);
+    flex: 1 1 auto;
+    box-sizing: border-box;
+    background-color: #3b424b;
+
+     @include e(layout) {
+        display: block;
+        flex: 0 0 auto;
+        box-sizing: border-box;
+    } //.app-loader__layout
+
+    @include e(logo) {
+        display: block;
+        min-width: 816px;
+        max-width: 1024px;
+        margin: 0 72px;
+        flex: 1 1 auto;
+        box-sizing: border-box;
+    } //.app-loader__logo
+} //.app-loader
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - -

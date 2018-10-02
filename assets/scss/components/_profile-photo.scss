@@ -1,0 +1,51 @@
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+// Profile photo
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+@include b(profile-photo) {
+    display: block;
+    box-sizing: border-box;
+    position: relative;
+
+    @include e(body) {
+        display: block;
+        overflow-y: auto;
+    }
+
+    @include e(item) {
+        @include flex;
+        @include flex-direction(row);
+        @include flex-wrap(nowrap);
+        @include flex-align(left, stretch);
+        box-sizing: border-box;
+        margin-bottom: 8px;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    @include e(wrapper) {
+        display: block;
+        width: 48px;
+        height: 48px;
+        flex: 0 0 auto;
+        overflow: hidden;
+        position: relative;
+        border: 1px solid #ddd;
+        @include m(large) {
+            width: 150px;
+            height: 150px;
+        }
+        @include m(small) {
+            width: 80px;
+            heigh: 80px;
+        }
+    }
+
+    @include e(screenshot) {
+        display: block;
+        width: 100%;
+        height: 100%;
+        border: none;
+    }
+}

@@ -1,0 +1,115 @@
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// login-box
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+@include b(login-box){
+    @include flex;
+    @include flex-direction(column);
+    @include flex-wrap(nowrap);
+    @include flex-align(center, middle);
+    flex: 1 1 auto;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    background-color: #fff;
+
+   
+
+    @include e(container) {
+        display: none;
+        max-width: 388px;
+        width: 90%;
+    }
+
+    @include e(layout) {
+        display: block;
+        flex: 0 0 auto;
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+        margin-bottom: $global-margin;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    @include e(title) {
+        display: block;
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+        font-size: $global-font-size;
+        font-weight: $global-weight-normal;
+        color: $dark-gray;
+
+        @include m(logo) {
+            color: #000000;
+            font-weight: $global-weight-bold;
+        }
+    }
+
+    @include e(message) {
+        display: block;
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+        font-size: $global-font-size*0.875;
+        font-weight: $global-weight-normal;
+        color: $dark-gray;
+
+        @include m(success) {
+            color: $color-success;
+        }
+
+        @include m(error) {
+            color: $color-error;
+        }
+    }
+
+    @include e(button) {
+        padding: $global-padding*0.7 $global-padding;
+        font-size: $global-font-size*0.875;
+    }
+
+    @include m(sign-in) {
+        @include e(container) {
+            @include m(sign-in) {
+                display: block;
+            }
+            @include m(password-recovery) {
+                display: none;
+            }
+            @include m(successful-recovery) {
+                display: none;
+            }
+        }
+    }
+
+    @include m(password-recovery) {
+        @include e(container) {
+            @include m(sign-in) {
+                display: none;
+            }
+            @include m(password-recovery) {
+                display: block;
+            }
+            @include m(successful-recovery) {
+                display: none;
+            }
+        }
+    }
+
+    @include m(successful-recovery) {
+        @include e(container) {
+            @include m(sign-in) {
+                display: none;
+            }
+            @include m(password-recovery) {
+                display: none;
+            }
+            @include m(successful-recovery) {
+                display: block;
+            }
+        }
+    } 
+} //.login-box

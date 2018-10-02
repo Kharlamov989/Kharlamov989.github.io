@@ -1,0 +1,89 @@
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// Status Checker
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+@include b(status-checker) {
+    @include inline-flex;
+    @include flex-direction(row);
+    @include flex-wrap(nowrap);
+    @include flex-align(left, stretch);
+    flex: 0 0 auto;
+    box-sizing: border-box;
+    padding:0;
+    margin: 0;
+    font-size: 11px;
+    font-weight: 700;
+
+    @include e(status) {
+        @include flex;
+        @include flex-direction(row);
+        @include flex-wrap(nowrap);
+        @include flex-align(left, middle);
+        flex: 0 0 auto;
+        box-sizing: border-box;
+        border: solid 1px #ccc;
+        border-radius: 3px 0 0 3px;
+        padding: 3px 10px;
+        margin-right: -1px;
+        background-color: #fff;
+        text-transform: lowercase;
+        color: #666;
+    } //.status-checker__status
+
+    @include e(button) {
+        padding: 3px 6px;
+        border-radius: 0 3px 3px 0;
+        font-size: 11px;
+
+        &:hover {
+            z-index: 1;
+        } //.status-checker__button:hover
+    } //.status-checker__button
+
+    @include m(available) {
+        @include e(status) {
+            color: #4d7429;
+        } //.status-checker__status
+    } //.status-checker--success
+
+    @include m(banned) {
+        @include e(status) {
+            color: #ff0000;
+        } //.status-checker__status
+    } //.status-checker--banned
+    @include m(deleted) {
+        @include e(status) {
+            color: #990000;
+        } //.status-checker__status
+    } //.status-checker--deleted
+    @include m(error) {
+        @include e(status) {
+            color: #990000;
+        } //.status-checker__status
+    } //.status-checker--error
+    @include m(invalid_url) {
+        @include e(status) {
+            color: #d35400;
+        } //.status-checker__status
+    } //.status-checker--invalid_url
+    @include m(pending) {
+        @include e(status) {
+            color: #8E44AD;
+        } //.status-checker__status
+    } //.status-checker--pending
+    @include m(server_error) {
+        @include e(status) {
+            color: #990000;
+        } //.status-checker__status
+    } //.status-checker--server_error
+    @include m(unavailable) {
+        @include e(status) {
+            color: #990000;
+        } //.status-checker__status
+    } //.status-checker--unavailable
+    @include m(unknown) {
+        @include e(status) {
+            color: #990000;
+        } //.status-checker__status
+    } //.status-checker--unknown
+} //.status-checker
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

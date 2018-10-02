@@ -1,0 +1,83 @@
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// Export
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@include b(export) {
+    @include flex;
+    @include flex-direction(row);
+    @include flex-wrap(nowrap);
+    @include flex-align(left, middle);
+    flex: 0 0 auto;
+    box-sizing: border-box;
+    margin: 0 -4px;
+    font-size: 12px;
+    color: #333;
+
+    @include e(layout) {
+        display: block;
+        flex: 1 1 auto;
+        box-sizing: border-box;
+        padding: 0 4px;
+
+        @include m(generate) {
+            display: none;
+        } //.export__layout--generate
+
+        @include m(error) {
+            display: none;
+        } //.export__layout--error
+        
+        @include m(success) {
+            display: none;
+        } //.export__layout--success
+    } //.export__layout
+
+    @include m(generate) {
+        @include e(layout) {
+            @include m(generate) {
+                display: block;
+            }
+
+            @include m(error) {
+                display: none;
+            } //.export__layout--error
+            
+            @include m(success) {
+                display: none;
+            } //.export__layout--success
+        } //.export__layout
+    } //.export--generate
+
+    @include m(error) {
+        @include e(layout) {
+            @include m(generate) {
+                display: none;
+            }
+
+            @include m(error) {
+                display: block;
+            }
+            
+            @include m(success) {
+                display: none;
+            }
+        }
+    }
+
+    @include m(success) {
+        @include e(layout) {
+            @include m(generate) {
+                display: none;
+            }
+            
+            @include m(error) {
+                display: none;
+            }
+
+            @include m(success) {
+                display: block;
+            }
+        }
+    }
+} //.export
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

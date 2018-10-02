@@ -1,0 +1,56 @@
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// Search
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+@include b(search) {
+    display: block;
+    width: 230px;
+    height: 28px;
+    box-sizing: border-box;
+    position: relative;
+
+    @include e(input) {
+        display: block;
+        width: 100%;
+        height: 28px;
+        box-sizing: border-box;
+        padding: 0 24px 0 8px;
+        border: solid 1px #ccc;
+        outline: none;
+        font-size: 14px;
+        line-height: 1;
+        color: #333;
+        transition: border-color 0.25s ease-out;
+        
+        &:focus,
+        &:hover {
+            border-color: #999;
+            .search__button {
+                fill: #999;
+            }
+        }
+    }
+
+    @include e(button) {
+        display: block;
+        padding: 6px 8px;
+        border: none;
+        background-color: transparent;
+        fill: #aaa;
+        box-shadow: none;
+        font-size: 14px;
+        position: absolute;
+        top: 50%;
+        right: 1px;
+        transform: translateY(-50%);
+
+        &:hover,
+        &:focus {
+            background-color: transparent;
+        }
+        &:active {
+            background-color: transparent;
+            box-shadow: none;
+        }
+    }
+}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

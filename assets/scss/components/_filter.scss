@@ -1,0 +1,43 @@
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+// Filter
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+@include b(filter) {
+    display: none;
+    @include flex-direction(row);
+    @include flex-wrap(nowrap);
+    @include flex-align(left, top);
+    flex: 1 1 auto;
+    box-sizing: border-box;
+    padding: 8px 4px;
+    border: solid 1px #ccc;
+    background-color: #ffffff;
+
+    @include e(layout) {
+        @include flex;
+        @include flex-direction(row);
+        @include flex-wrap(nowrap);
+        @include flex-align(left, stretch);
+        flex: 8 1 auto;
+        box-sizing: border-box;
+        padding: 0 4px;
+
+        &:last-child {
+            margin-bottom: 0;
+        } //.filter__layout:last-child
+    } //.filter__layout
+    
+    @include e(column) {
+       flex-wrap: wrap;
+       margin-bottom: -8px;
+    }
+
+    @include e(col) {
+        padding-bottom: 8px;
+    }
+
+    @include m(active) {
+        @include flex;
+    } //.filter--active
+
+} //.filter
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - -

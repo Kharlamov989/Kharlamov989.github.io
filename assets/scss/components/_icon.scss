@@ -1,0 +1,36 @@
+// SVG icons align
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+@include b(icon) {
+    display: inline-flex;
+    align-self: center;
+    width: 1em;  
+    height: 1em;  
+    position: relative;
+    
+    @include e(svg) {        
+        width:1em;
+        height:1em;
+    } //.icon__svg
+
+    @include m(baseline) {        
+        @include e(svg) {
+            position: absolute;
+            bottom: -0.125em;
+        } // .icon__svg
+    } // .icon--baseline
+
+    @include e(table) {
+        font-size: 20px;
+        @include m(blue) {
+            fill: #485db9;
+        }
+        @include m(green) {
+            fill: green;
+        }
+    }
+
+    @include m(medium) {
+        font-size: 16px;
+    }
+} // .icon
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - -

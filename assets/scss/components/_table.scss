@@ -1,0 +1,201 @@
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// Table
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+@include b(table) {
+    display: table;
+    width: 100%;
+    height: auto;
+    border: solid 1px #ccc;
+    border-spacing: 0;
+    border-collapse: collapse;
+    background-color: #fff;
+    font-size: 14px;
+    color: #333;
+
+    @include e(thead) {
+        display: table-header-group;
+    } //.table__thead
+
+    @include e(tbody) {
+        
+        @include m(border) {
+            border-top: 5px solid #f2f2f2;
+            border-bottom: 5px solid #f2f2f2;
+        }
+        
+        @include m(sub) {
+            border: 1px solid #ddd;
+        }
+        display: table-row-group;
+    } //.table__tbody
+
+    @include e(row) {
+        display: table-row;
+
+        // &:hover {
+        //     .table__td {
+        //         background-color: #f1f4f8;
+        //     }  //.table__td
+        // } //.table__row:hover
+
+        @include m(checked) {
+            .table__td {
+                background-color: #ffffcc;
+            }  //.table__td
+        } //.table__row--checked
+
+        @include m(border) {
+            border: 1px solid #ccc;
+        }
+
+        @include m(loader) {
+            display: none !important;
+        }
+    } //.table__row
+
+    @include e(th) {
+        display: table-cell;
+        padding: 4px 8px;
+        background-color: #f2f2f2;
+        vertical-align: middle;
+        font-weight: 400;
+        white-space: nowrap;
+        text-align: left;
+
+        @include m(tiny) {
+            width: 1%;
+        } //.table__th--tiny
+
+        @include m(control-bar) {
+            width: 30%;
+        } //.table__th--control-bar
+
+        @include m(align-center) {
+            text-align: center;
+        } //.table__th--align-center
+        
+        @include m(medium) {
+            width: 400px;
+        }
+    } //.table__th
+
+    @include e(td) {
+        position: relative;
+        display: table-cell;
+        padding: 8px;
+        border-top: solid 1px #ccc;
+        border-bottom: solid 1px #ccc;
+        font-weight: 400;
+        text-align: left;
+        transition: background-color 0.25s ease-out;
+        position: relative;
+
+        @include m(align-center) {
+            text-align: center;
+        } //.table__td--align-center
+
+        @include m(date) {
+            width: 150px;
+        } //.table__td--tiny
+
+        @include m(medium) {
+            width: 400px;
+        }
+
+        @include m(nowrap) {
+            white-space: nowrap;
+        }
+
+        @include m(top) {
+            vertical-align: top;
+        }
+
+        @include m(padding-top) {
+            padding-top: 20px;
+        }
+
+        @include e(loader) {
+            font-size: 28px;
+        }
+
+        @include m(line) {
+            &:after {
+                content : "";
+                position: absolute;
+                right    : 0;
+                z-index: 100;
+                top  : 0;
+                width  : 1px;
+                height: 50%;  /* or 100px */
+                background: #ddd;
+            }
+        }
+    } //. //.table__td
+    
+
+    
+    @include m(secondary) {
+        @include e(row) {
+            display: table-row;
+
+            &:hover {
+                .table__td {
+                    background-color: #fff;
+                }  //.table__td
+            } //.table__row:hover
+        } //.table__row
+
+        @include e(th) {
+            border: solid 1px #ccc;
+        }
+
+        @include e(td) {
+            border: solid 1px #ccc;
+        }
+    }
+
+    @include m(tertiary) {
+        border: 0;
+
+        @include e(row) {
+            display: table-row;
+
+            &:hover {
+                .table__td {
+                    background-color: #fff;
+                }  //.table__td
+            } //.table__row:hover
+        } //.table__row
+
+        @include e(th) {
+            border: 0;
+        }
+        
+        @include e(td) {
+            border: 0;
+            @include m(border) {
+                border-right: 1px solid #ddd;
+            }
+        }
+    }
+
+    @include m(small) {
+        margin-top: 10px;
+        @include e(td) {
+            padding: 2px 8px;
+        }
+    }
+
+    @include m(load) {
+        @include e(row) {
+            @include m(loader) {
+                display: table-row !important;
+            }
+
+            @include m(content) {
+                display: none !important;
+            }
+        }
+    }
+
+}  //.table

@@ -1,0 +1,31 @@
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// Loader
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@include b(loader) {
+    display: inline-flex;
+    align-self: center;
+    width: 1em;  
+    height: 1em;  
+    font-size: inherit;
+    position: relative;
+
+    @include e(svg) {        
+        width:1em;
+        height:1em;
+        position: absolute;
+        bottom: -0.125em;
+    } //.icon__svg
+
+    @include e(cyrcle) {
+        fill: #b7babd;
+    }
+
+    @include e(runner) {
+        fill:#2c3e50;
+    }
+
+    @include m(large) {
+        font-size: 25px;
+    }
+}

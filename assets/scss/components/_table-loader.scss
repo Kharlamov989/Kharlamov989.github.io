@@ -1,0 +1,40 @@
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+// Table-loader
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+@include b(table-loader) {
+    @include flex;
+    @include flex-direction(row);
+    @include flex-wrap(nowrap);
+    @include flex-align(left, middle);
+    flex: 1 1 auto;
+    box-sizing: border-box;
+    margin: 0 -4px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: #333;
+
+    @include e(layout) {
+        display: block;
+        flex: 0 0 auto;
+        box-sizing: border-box;
+        padding: 0 4px;
+
+        @include m(loader) {
+            display: none;
+        }
+    } //.panel__layout
+
+    @include e(loader) {
+        font-size: 26px;
+    }
+
+    @include m(load) {
+        @include e(layout) {
+            @include m(loader) {
+                display: block;
+            }
+        }
+    }
+}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

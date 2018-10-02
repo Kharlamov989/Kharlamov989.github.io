@@ -1,0 +1,76 @@
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// Pagination 
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+@include b(pagination) {
+    @include flex;
+    @include flex-direction(row);
+    @include flex-wrap(nowrap);
+    @include flex-align(left, middle);
+    flex: 0 0 auto;
+    height: auto;
+    box-sizing: border-box;
+    margin: 0 -4px;
+    font-size: 12px;
+    color: #333;
+
+    @include e(layout) {
+        @include flex;
+        @include flex-direction(row);
+        @include flex-wrap(nowrap);
+        flex: 0 0 auto;
+        box-sizing: border-box;
+        padding: 0 4px;
+    } //.pagination__layout
+
+    @include e(icon) {
+        height: 36px;
+    }
+
+    @include e(link) {
+        @include flex;
+        @include flex-direction(row);
+        @include flex-wrap(nowrap);
+        @include flex-align(center, stretch);
+        flex: 1 1 auto;
+        box-sizing: border-box;
+        padding: 10px 16px;
+        font-size: 14px;
+        font-weight: 400;
+        text-decoration: none;
+        color: #333333;
+        transition: box-shadow 0.25s ease-out;
+        cursor: pointer;
+
+        &:visited {
+            color: #333333;
+        } //.pagination__link:visited
+
+        &:hover {
+            box-shadow: inset 0 -0.25rem 0 0 #cccccc;;
+            
+        } //.pagination__link:hover
+
+        &:active {
+            box-shadow: inset 0 -0.25rem 0 0 #0165a7;
+        } //.pagination__link:active
+        
+        @include m(user) {
+            font-size: 14;
+        } //.pagination__link--user
+
+        @include m(active) {
+            box-shadow: inset 0 -0.25rem 0 0 #0165a7;
+            &:hover {
+                box-shadow: inset 0 -0.25rem 0 0 #0165a7;
+            }
+        } //.pagination__link--active
+        
+        @include m(disabled) {
+          pointer-events: none;
+          cursor: default;
+          text-decoration: none;
+          color: black;
+        }
+    } //.pagination__link
+} //.pagination
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

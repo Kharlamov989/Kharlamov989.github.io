@@ -1,0 +1,34 @@
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// Counter Of Complaint
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+@include b(counter-of-complaint) {
+    @include inline-flex;
+    @include flex-direction(row);
+    @include flex-wrap(nowrap);
+    @include flex-align(left, stretch);
+    flex: 0 0 auto;
+    box-sizing: border-box;
+    padding: 4px 0;
+    margin: 0;
+    border: solid 1px #ccc;
+    border-radius: 3px;
+    background-color: #fff;
+    font-size: 12px;
+
+    @include e(layout) {
+        @include inline-flex;
+        @include flex-direction(row);
+        @include flex-wrap(nowrap);
+        @include flex-align(left, middle);
+        flex: 0 0 auto;
+        box-sizing: border-box;
+        padding: 0 4px;
+
+        @include m(divider) {
+            width: 1px;
+            padding: 0;
+            background-color: #ccc;
+        } //.counter-of-complaint__layout--divider
+    } //.counter-of-complaint__layout
+} //.counter-of-complaint
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

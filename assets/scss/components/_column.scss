@@ -1,0 +1,67 @@
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// Column 
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+@include b(column) {
+    @include flex;
+    @include flex-direction(row);
+    @include flex-wrap(nowrap);
+    @include flex-align(left, stretch);
+    flex: 1 1 auto;
+    box-sizing: border-box;
+    margin: 0 -4px;
+
+    @include e(col) {
+        @include flex;
+        @include flex-direction(column);
+        @include flex-wrap(nowrap);
+        @include flex-align(left, stretch);
+        flex: 1 1 auto;
+        box-sizing: border-box;
+        padding: 0 4px;
+        
+        @include m(--1) {
+            flex: 0 0 12.5%;
+            max-width: 12.5%;
+        }
+
+        @include m(--2) {
+            flex: 0 0 25%;
+            max-width: 25%; 
+        }
+
+        @include m(--3) {
+            flex: 0 0 37.5%;
+            max-width: 37.5%; 
+        }
+
+        @include m(--4) {
+            flex: 0 0 50%;
+            max-width: 50%; 
+        }
+
+        @include m(--5) {
+            flex: 0 0 62.5%;
+            max-width: 62.5%;
+        }
+
+        @include m(--6) {
+            flex: 0 0 75%;
+            max-width: 75%; 
+        }
+
+        @include m(--7) {
+            flex: 0 0 87.5%;
+            max-width: 87.5%;
+        }
+
+        @include m(--8) {
+            flex: 0 0 100%;
+            max-width: 100%; 
+        }
+    } //.column__col
+
+    @include m(wrap) {
+        flex-wrap: wrap;
+    } //.column--wrap
+} //.column
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - -

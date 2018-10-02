@@ -1,0 +1,115 @@
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// Logo Loader
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+@include b(logo-loader) {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+
+    @include e(text) {
+        fill: #ffffff;
+        fill: transparent;
+        stroke-width: 1.5;
+        stroke-dasharray: 700;
+        stroke-dashoffset: 0;
+        stroke: #ffffff;
+        animation: draw-line-text 1.85s linear forwards, 
+                   draw-background-text-white 2s 1.85s ease-out forwards;
+
+        @include m(yellow) {
+            stroke: #ffcc00;
+            animation: draw-line-text 1.85s linear forwards, 
+                       draw-background-text-yellow 2s 1.85s ease-out forwards;
+        }
+    }
+
+    @include e(shield) {
+        fill: #3B424B;
+
+        @include m(border) {
+            fill: #ffffff;
+            fill: transparent;
+            stroke-width: 1.5;
+            stroke-dasharray: 1350;
+            stroke-dashoffset: 0;
+            stroke: #ffffff;
+            animation: draw-line-shield-base 1.85s linear forwards,
+                       draw-background-text-white 2s 1.85s ease-out forwards; 
+        }
+
+        @include m(reflection) {
+            fill: #646A71;
+            fill: transparent;
+            stroke-width: 1.5;
+            stroke-dasharray: 900;
+            stroke-dashoffset: 0;
+            stroke: #646A71;
+            animation: draw-line-shield-reflection  1.85s linear forwards,
+                       draw-background-shield-reflection 1.85s 2.20s ease-out forwards;
+        }
+    }
+
+    @keyframes draw-line-text {
+        from {
+            stroke-dashoffset: 700; 
+        }
+        to {
+            stroke-dashoffset: 0; 
+        } 
+    }
+
+    @keyframes draw-background-text-white {
+        from {
+            fill: transparent; 
+        }
+        to {
+            fill: #ffffff;
+        } 
+    }
+
+    @keyframes draw-background-text-yellow {
+        from {
+            fill: transparent;
+        }
+        to {
+            fill: #ffcc00;
+        }
+    }
+
+    @keyframes draw-line-shield-base {
+        from {
+            stroke-dashoffset: 1350;
+        }
+        to {
+            stroke-dashoffset: 0;
+        } 
+    }
+
+    @keyframes draw-background-shield-base {
+      from {
+            fill: transparent; 
+        }
+        to {
+            fill: #3B424B; 
+        }
+    }
+
+    @keyframes draw-line-shield-reflection {
+        from {
+            stroke-dashoffset: 900;
+        }
+        to {
+            stroke-dashoffset: 0; 
+        }
+    }
+
+
+    @keyframes draw-background-shield-reflection {
+        from {
+            fill: transparent;
+        }
+        to {
+            fill: #646A71; 
+        } 
+    }
+}

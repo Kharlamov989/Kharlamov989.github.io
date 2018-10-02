@@ -1,0 +1,39 @@
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+// Control Bar 
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+@include b(control-bar) {
+    @include flex;
+    @include flex-direction(row);
+    @include flex-wrap(nowrap);
+    @include flex-align(justify, stretch);
+    flex: 0 0 auto;
+    height: auto;
+    box-sizing: border-box;
+    padding: 8px;
+    border: solid 1px #ccc;
+    background-color: #fff;
+    font-size: 12px;
+
+    @include e(layout) {
+        @include flex;
+        @include flex-direction(row);
+        @include flex-wrap(nowrap);
+        flex: 1 1 auto;
+
+        @include m(pagination) {
+            margin-bottom: -9px;
+        }
+    } //.control-bar__layout
+
+    @include m(sub) {
+        padding: 8px 0;
+        margin: 0;
+        border: none;
+        background-color: transparent;
+    } //.control-bar--unstyled
+
+    @include m(secondary) {
+        border: 0;
+    }
+} //.control-bar
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - -

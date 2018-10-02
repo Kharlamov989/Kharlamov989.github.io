@@ -1,0 +1,59 @@
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// Form
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+@include b(form){
+    display: block;
+    flex: 1 1 auto;
+    box-sizing: border-box;
+    padding: 8px;
+    margin: 0;
+    background-color: #fff;
+
+    @include e(title){
+        display: block;
+        box-sizing: border-box;
+        font-size: 14px;
+        font-weight: 700;
+        color: #333;
+    } //.form__title
+
+    @include e(title) {
+        display: block;
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+        margin-bottom: 8px;
+        font-size: 16px;
+        font-weight: 700;
+    }
+
+    @include e(field) {
+        display: block;
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+        margin-bottom: 8px;
+        font-size: 14px;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    @include e(button) {
+        padding: 11px 17px;
+        border-radius: 0;
+        font-size: 14px;
+    }
+
+    @include m(login){
+        width: 400px;
+        flex: 0 0 auto;
+        background-color: transparent;
+
+        @include e(title) {
+            text-transform: uppercase;
+            color: #fff;
+        }
+    }
+} //.form

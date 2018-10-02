@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1078.95 1078.95">
+  <defs>
+    <style>
+      .cls-3,
+      .cls-2,
+      .cls-1 {
+        fill: transparent;
+        stroke: #FFCC00;
+        stroke-width: 2;
+        stroke-dasharray: 800;
+        stroke-dashoffset: 0;
+        animation: dash 1.5s linear forwards, bg-fill 2s 1.5s ease-out forwards;
+      }
+
+      @keyframes dash {
+        from {
+          stroke-dashoffset: 800;
+        }
+        to {
+          stroke-dashoffset: 0;
+        }
+      }
+
+      @keyframes bg-fill {
+        from {
+          fill: transparent;
+        }
+        to {
+          fill: #FFCC00;
+        }
+      }
+    </style>
+  </defs>
+    <g id="K">
+        <path class="cls-1" d="M932.08,539.72l149.23,169.06h-37.19L913.24,559.05l18.83-19.33Z"/>
+        <path class="cls-2" d="M1030,370.17h37.19L879.28,576.9V536.25Z"/>
+        <path class="cls-3" d="M838,370h29V709H838Z"/>
+    </g>
+</svg>

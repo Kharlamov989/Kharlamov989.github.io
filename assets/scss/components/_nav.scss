@@ -1,0 +1,169 @@
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+// Navigation 
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+@include b(nav) {
+    @include flex;
+    @include flex-direction(row);
+    @include flex-wrap(nowrap);
+    @include flex-align(left, stretch);
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+
+    @include e(layout) {
+        @include flex;
+        @include flex-direction(row);
+        @include flex-wrap(nowrap);
+        @include flex-align(center, stretch);
+        flex: 0 0 auto;
+        box-sizing: border-box;
+    } //.nav__layout
+
+    @include e(link) {
+        @include flex;
+        @include flex-direction(column);
+        @include flex-wrap(nowrap);
+        @include flex-align(center, stretch);
+        flex: 1 1 auto;
+        box-sizing: border-box;
+        padding: 8px 16px;
+        font-size: 12px;
+        font-weight: 700;
+        text-decoration: none;
+        color: #fff;
+        transition: background-color 0.25s ease-out;
+
+        &:visited {
+            color: #fff;
+        } //.nav__link:visited
+
+        &:hover {
+            background-color: #6b7884;
+        } //.nav__link:hover
+
+        &:active {
+            background-color: #6b7884;
+        } //.nav__link:active
+        
+        @include m(user) {
+            padding-left: 34px;
+            position: relative;
+            
+            &:before {
+                content: '';
+                display: block;
+                width: 14px;
+                height: 100%;
+                background-image: url('../icons/icon--user.svg');
+                background-repeat: no-repeat;
+                background-position: 0 47%;
+                position: absolute;
+                top: 0;
+                left: 16px;
+            } //.nav__link--user:before
+        } //.nav__link--user
+
+        @include m(active) {
+            background-color: #6b7884;
+            text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.65);
+        } //.nav__link--active
+    } //.nav__link
+
+    @include e(counter) {
+        display: block;
+        font-size: inherit;
+        font-weight: 400;
+    } //.nav__counter
+
+    @include e(icon) {
+        font-size: 14px;
+        fill: #fff;
+    }
+} //.nav
+
+@include b(nav-sub) {
+    @include flex;
+    @include flex-direction(row);
+    @include flex-wrap(nowrap);
+    @include flex-align(left, stretch);
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    font-size: 12px;
+
+    @include e(layout) {
+        @include flex;
+        @include flex-direction(row);
+        @include flex-wrap(nowrap);
+        @include flex-align(center, stretch);
+        flex: 0 0 auto;
+        box-sizing: border-box;
+    }
+    
+    @include e(link) {
+        @include flex;
+        @include flex-direction(row);
+        @include flex-wrap(nowrap);
+        @include flex-align(center, stretch);
+        flex: 1 1 auto;
+        box-sizing: border-box;
+        padding: 16px*0.84 16px;
+        text-decoration: none;
+        color: #333333;
+        transition: box-shadow 0.25s ease-out;
+        cursor: pointer;
+        font-size: 14px;
+
+        &:visited {
+            color: #333333;
+        } //.nav__link:visited
+
+        &:hover {
+            box-shadow: inset 0 -0.25rem 0 0 #cccccc;
+            
+        } //.nav__link:hover
+
+        &:active {
+            box-shadow: inset 0 -0.25rem 0 0 #0165a7;
+        } //.nav__link:active
+        
+        // @include m(user) {
+        //     font-size: 14px*1.375;
+        // } //.nav__link--user
+
+        @include m(active) {
+            box-shadow: inset 0 -0.25rem 0 0 #0165a7;
+            &:hover {
+                box-shadow: inset 0 -0.25rem 0 0 #0165a7;
+            }
+        } //.nav__link--active
+
+        @include m(disable) {
+            color: #AAAAAA;
+            pointer-events: none;
+            cursor: pointer;
+            text-decoration: none;
+        }
+    } //.nav__link
+
+    @include e(title) {
+        @include flex;
+        @include flex-direction(column);
+        @include flex-wrap(nowrap);
+        @include flex-align(center, stretch);
+        flex: 1 1 auto;
+        box-sizing: border-box;
+        padding: 8px 12px;
+        font-size: 14px;
+        font-weight: 400;
+        text-decoration: none;
+    } //.nav__title
+
+    @include m(border) {
+        width: 100%;
+        border-bottom: solid 1px #ccc;
+    }
+}
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - -

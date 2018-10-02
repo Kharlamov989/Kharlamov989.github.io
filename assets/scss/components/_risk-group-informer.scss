@@ -1,0 +1,102 @@
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+// Risl Group Informer
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+@include b(risk-group-informer) {
+    display: block;
+    box-sizing: border-box;
+    position: relative;
+
+    @include e(button) {
+        display: block;
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+        border: none;
+        background-color: transparent;
+        font-size: 12px;
+        text-decoration: underline;
+        color: #666;
+
+        &:focus,
+        &:hover {
+            text-decoration: none;
+        }
+    }
+
+    @include e(popup) {
+        display: none;
+        width: 280px;
+        box-sizing: border-box;
+        padding: 8px;
+        border: solid 1px #aaa;
+        border-radius: 3px;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2785);
+        background-color: #fff;
+        z-index: 1;
+        position: absolute;
+        top: 24px;
+        left: 50%;
+        transform: translateX(-50%);
+
+        &:before {
+            content: '';
+            display: block;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 0 8px 8px 8px;
+            border-color: transparent transparent #aaa transparent;
+            position: absolute;
+            top: -9px;
+            left: 50%;
+            z-index: 0;
+            transform: translateX(-50%);
+        }
+
+        &:after {
+            content: '';
+            display: block;
+            width: 0; 
+            height: 0;
+            border-style: solid;
+            border-width: 0 8px 8px 8px;
+            border-color: transparent transparent #fff transparent;
+            position: absolute;
+            top: -8px;
+            left: 50%;
+            z-index: 1;
+            transform: translateX(-50%);
+        }
+    }
+
+    @include m(primary) {
+        @include e(button) {
+            color: #5a80a5;
+        }
+    } //.risk-group-informer--primary
+
+    @include m(secondary) {
+        @include e(button) {
+            color: #999;
+        }
+    } //.risk-group-informer--secondary
+
+    @include m(warning) {
+        @include e(button) {
+            color: #d35400;
+        }        
+    } //.risk-group-informer--warning
+
+    @include m(allert) {
+        @include e(button) {
+            color: #990000;
+        }
+    } //.risk-group-informer--warning
+
+    @include m(active) {
+        @include e(popup) {
+            display: block;
+        }
+    }
+} //.risk-group-informer
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

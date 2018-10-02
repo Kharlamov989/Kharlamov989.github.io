@@ -1,0 +1,130 @@
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+// Screenshot Viewer
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+@include b(screenshot-viewer) {
+    display: block;
+    box-sizing: border-box;
+    position: relative;
+
+    @include e(button) {
+        padding: 2px 4px;
+        background-color: #fff;
+        font-size: 11px;
+        color: #666;
+    }
+
+    @include e(popup) {
+        display: none;
+        width: 240px;
+        box-sizing: border-box;
+        padding: 8px;
+        border: solid 1px #aaa;
+        border-radius: 3px;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2785);
+        background-color: #fff; 
+        z-index: 1;
+        position: absolute;
+        top: 24px;
+        left: 0; 
+
+        &:before {
+            content: '';
+            display: block;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 0 8px 8px 8px;
+            border-color: transparent transparent #aaa transparent;
+            position: absolute;
+            top: -8px;
+            left: 39px;
+            z-index: 0;
+        }
+
+        &:after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 0 6px 6px 6px;
+            border-color: transparent transparent #fff transparent;
+            position: absolute;
+            top: -6px;
+            left: 41px;
+            z-index: 1;
+        }
+    }
+    @include e(body) {
+        display: block;
+        overflow-y: auto;
+    }
+
+    @include e(item) {
+        @include flex;
+        @include flex-direction(row);
+        @include flex-wrap(nowrap);
+        @include flex-align(left, stretch);
+        box-sizing: border-box;
+        margin-bottom: 8px;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    @include e(screenshot-wraper) {
+        display: block;
+        width: 48px;
+        height: 48px;
+        flex: 0 0 auto;
+        box-sizing: border-box;
+        margin-right: 8px;
+        border: solid 1px #999;
+        overflow: hidden;
+        position: relative;
+        @include m(sub) {
+            width: 80px;
+            height: 80px;
+        }
+    }
+
+    @include e(screenshot) {
+        display: block;
+        width: 100%;
+        height: 100%;
+        border: none;
+    }
+
+    @include e(field) {
+        padding: 2px 0;
+    }
+
+    @include e(author) {
+        display: block;
+        font-size: 14px;
+        font-weight: 700;
+        color: #333;
+    }
+
+    @include e(date) {
+        display: block;
+        font-size: 10px;
+        font-weight: 400;
+        color: #333;
+    }
+
+    @include e(link) {
+        color: #990000;
+
+        &:visited {
+            color: #990000;
+        }
+    }
+
+    @include m(active) {
+        @include e(popup) {
+            display: block;
+        }
+    }
+}

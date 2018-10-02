@@ -1,0 +1,36 @@
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// Logo 
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+@include b(logo) {
+    @include flex;
+    @include flex-direction(row);
+    @include flex-wrap(nowrap);
+    @include flex-align(center, middle);
+    align-self: center; 
+    height: 15px;
+    box-sizing: border-box;
+    margin: 0 16px;
+    position: relative;
+
+    @include e(icon) {
+        flex: 0 0 auto;
+        width: inherit;
+        height: inherit;
+    } // .logo__icon
+
+    @include m(n-m) {
+        margin: 0;
+    }
+
+    @include m(large) {
+        width: 250px;
+        height: auto;
+    }
+
+    @include e(list) {
+        height: 20px;
+        width: 30px;
+        margin: 0; 
+    }
+} // .logo
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - -
