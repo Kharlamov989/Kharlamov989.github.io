@@ -47,14 +47,4 @@ export class NewComponent {
     public refresh(): void {
         this.list = this.storageProvider.get('organizations');
     }
-
-    public toNextStage(): Observable<any> {
-        return this.mainService.moveToStage('take', { task_ids: this.selectedRow }).pipe(
-            map(() => {
-                this.selectedRow = [];
-                this.grid.refresh();
-                this.tabs.getCounters()
-            })
-        );
-    }
 }
